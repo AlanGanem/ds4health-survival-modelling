@@ -1,7 +1,7 @@
 # Projeto 2 – Predizendo Prognóstico de Mortalidade com Dados Sintéticos
 
-# `Previsão de prognóstico médico utilizando dados sintéticos`
-# `Prognostics prediction with synthetic data`
+# Projeto `Previsão de prognóstico médico utilizando dados sintéticos`
+# Project `Prognostics prediction with synthetic data`
 
 # Apresentação
 
@@ -72,13 +72,13 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 * `patients.csv` e `conditions.csv` do `scenario02`
 
 
-# Resultados Obtidos
+# Resultados e Discussão
 > 
 Abaixo pode ser encontrados algumas curvas de sobrevivência para os casos 1, 2 e 3.
 
-![alt text](./files/survival_curve_1_4.png "Figura 1")
-![alt text](./files/survival_curve_2_5.png "Figura 2")
-![alt text](./files/survival_curve_3_2.png "Figura 3")
+![alt text](../files/survival_curve_1_4.png "Figura 1")
+![alt text](../files/survival_curve_2_5.png "Figura 2")
+![alt text](../files/survival_curve_3_2.png "Figura 3")
 
 
 > Podemos observar que o método de análise de sobrevivência traz uma informação mais completa, no caso de censuras. Um alerta vermelho surge ao observamos mortes nos casos 1 e 2 quando as probabilidades de sobrevivência estão altas, isso pode significar uma calibração ruim do modelo, que será verificada com a métrica de brier.
@@ -104,30 +104,13 @@ Abaixo pode ser encontrados algumas curvas de sobrevivência para os casos 1, 2 
 > Outro ponto é que o cenário 3 mostrou o melhor desempenho, tanto em termos de calibração quanto em ordenação, isso provavelmente ocorre pois estamos validando o modelo em populações semelhantes com a base de treino. Nos casos 1 e 2, utilizamos populações de bases de dados (cenários) diferentes, dificultando a generalização do modelo. Ainda assim, o C-Index não foi tão baixo, o que indica que ainda que a calibração das probabilidades de morte estejam muito fora (valor de brier score alto), a ordenação sugerida pelo modelo ainda faz sentido.
 
 # Evolução do Projeto
-> Para possíveis próximos passos, pode ser interessante utilizar algum viés indutivo de profissionais da área para construção de modelos e até mesmo para filtragem de dados, a fim de criar modelos menos genéricos, utilizando apenas features mais apropriadas para dominios específicos, por exemplo: modelos de sobrevivencia para problemas cardíacos, para problemas renais, etc...
+> Para possíveis próximos passos, pode ser interessante utilizar algum viés indutivo de profissionais da área para >construção de modelos e até mesmo para filtragem de dados, a fim de criar modelos menos genéricos, utilizando apenas >features mais apropriadas para dominios específicos, por exemplo: modelos de sobrevivencia para problemas cardíacos, >para problemas renais, etc...
 
-
-# Discussão
-> Fazer um breve debate sobre os resultados alcançados. Aqui pode ser feita a análise dos possíveis motivos que certos resultados foram alcançados. Por exemplo:
-> * por que seu modelo alcançou (ou não) um bom resultado?
-> * por que o modelo de um cenário não se desempenhou bem em outro?
->
-> A discussão dos resultados também pode ser feita opcionalmente na seção de Resultados, na medida em que os resultados são apresentados. Aspectos importantes a serem discutidos: É possível tirar conclusões dos resultados? Quais? Há indicações de direções para estudo? São necessários trabalhos mais profundos?
 
 # Conclusão
-> Destacar as principais conclusões obtidas no desenvolvimento do projeto.
->
-> Destacar os principais desafios enfrentados.
->
-> Principais lições aprendidas.
->
-> Trabalhos Futuros:
-> * o que poderia ser melhorado se houvesse mais tempo?
+> É possível concluir que modelos de aprendizado de máquinas podem ser utilizados para previsão de diagnóstico, e que para volumes de dados menores, é preferível usar modelos mais simples, como por exemplo modelos lineares generalizados, como é o caso do modelo de Cox. Um possível estudo adicional a ser realizado é entender com bases de dados maiores e reais, qual seria a performance do modelo que usa ensemble de árvores (xgbse).
 
 # Referências Bibliográficas
-> Lista de artigos, links e referências bibliográficas (se houver).
->
-> Fiquem à vontade para escolher o padrão de referenciamento preferido pelo grupo.
 
 - Stel VS, Dekker FW, Tripepi G, Zoccali C, Jager KJ. Survival analysis II: Cox regression. Nephron Clin Pract. 2011;119(3):c255-60. doi: 10.1159/000328916. Epub 2011 Sep 14. PMID: 21921637.
 - Rai, S., Mishra, P., & Ghoshal, U. C. (2021). Survival analysis: A primer for the clinician scientists. In Indian Journal of Gastroenterology (Vol. 40, Issue 5, pp. 541–549). Springer Science and Business Media LLC. https://doi.org/10.1007/s12664-021-01232
