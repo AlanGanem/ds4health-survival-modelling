@@ -42,17 +42,17 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 > Um exemplo de como os dados aparecem antes de serem transformados em variáveis dummy pode ser encontrado abaixo, para um paciente em específico:
 
 >| PATIENT                              | START               |     LAT |      LON |     AGE | RACE   | ETHNICITY   | GENDER   | CONDITION_HISTORY                                                                                                                                                                                                        | CURRENT_CONDITION                                                        |   IS_DEAD |   SURVIVAL_SINCE_CONDITION |
-|:-------------------------------------|:--------------------|--------:|---------:|--------:|:-------|:------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|----------:|---------------------------:|
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1963-12-19 00:00:00 | 41.5569 | -70.9615 | 31      | white  | nonhispanic | M        | Sleep disorder (disorder)                                                                                                                                                                                                | Sleep disorder (disorder)                                                |         0 |                      21334 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1964-01-04 00:00:00 | 41.5569 | -70.9615 | 31.0438 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)                                                                                                                                                                   | Sleep apnea (disorder)                                                   |         0 |                      21318 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1964-03-09 00:00:00 | 41.5569 | -70.9615 | 31.2219 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension                                                                                                                                                | Hypertension                                                             |         0 |                      21253 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1970-04-13 00:00:00 | 41.5569 | -70.9615 | 37.3205 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease                                                                                                                   | Coronary Heart Disease                                                   |         0 |                      19027 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1994-08-10 00:00:00 | 41.5569 | -70.9615 | 61.663  | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)                                                                                | Chronic sinusitis (disorder)                                             |         0 |                      10142 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2006-11-13 00:00:00 | 41.5569 | -70.9615 | 73.9315 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | History of myocardial infarction (situation)__SEP__Myocardial Infarction |         0 |                       5664 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2015-06-14 00:00:00 | 41.5569 | -70.9615 | 82.5205 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                       2529 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2018-07-22 00:00:00 | 41.5569 | -70.9615 | 85.6274 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                       1395 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2021-03-09 00:00:00 | 41.5569 | -70.9615 | 88.2603 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                        434 |
-| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2022-01-05 00:00:00 | 41.5569 | -70.9615 | 89.0877 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Laceration of thigh                                                      |         0 |                        132 |                                   |
+>|:-------------------------------------|:--------------------|--------:|---------:|--------:|:-------|:------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|----------:|---------------------------:|
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1963-12-19 00:00:00 | 41.5569 | -70.9615 | 31      | white  | nonhispanic | M        | Sleep disorder (disorder)                                                                                                                                                                                                | Sleep disorder (disorder)                                                |         0 |                      21334 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1964-01-04 00:00:00 | 41.5569 | -70.9615 | 31.0438 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)                                                                                                                                                                   | Sleep apnea (disorder)                                                   |         0 |                      21318 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1964-03-09 00:00:00 | 41.5569 | -70.9615 | 31.2219 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension                                                                                                                                                | Hypertension                                                             |         0 |                      21253 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1970-04-13 00:00:00 | 41.5569 | -70.9615 | 37.3205 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease                                                                                                                   | Coronary Heart Disease                                                   |         0 |                      19027 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 1994-08-10 00:00:00 | 41.5569 | -70.9615 | 61.663  | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)                                                                                | Chronic sinusitis (disorder)                                             |         0 |                      10142 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2006-11-13 00:00:00 | 41.5569 | -70.9615 | 73.9315 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | History of myocardial infarction (situation)__SEP__Myocardial Infarction |         0 |                       5664 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2015-06-14 00:00:00 | 41.5569 | -70.9615 | 82.5205 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                       2529 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2018-07-22 00:00:00 | 41.5569 | -70.9615 | 85.6274 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                       1395 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2021-03-09 00:00:00 | 41.5569 | -70.9615 | 88.2603 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                        434 |
+>| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2022-01-05 00:00:00 | 41.5569 | -70.9615 | 89.0877 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Laceration of thigh                                                      |         0 |                        132 |                                   |
 
 > As variáveis finais que serão utilizadas pelo modelo passarão por uma etapa de seleção de features utilizando o modelo de Cox (Stel et al. 2011), considerado um modelo linear semiparamétrico para análise de sobrevivência. Devido sua formulação semiparamétrica, é possível determinar o p-valor dos parâmetros lineares de cada uma das features no modelo, de modo que é possível manter apenas as variáveis com p-valor menor que 0,05.
 
@@ -76,28 +76,29 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 > 
 Abaixo pode ser encontrados algumas curvas de sobrevivência para os casos 1, 2 e 3.
 
-![alt text](../files/survival_curve_1_4.png "Figura 1")
-![alt text](../files/survival_curve_2_5.png "Figura 2")
-![alt text](../files/survival_curve_3_2.png "Figura 3")
+![alt text](./files/survival_curve_1_4.png "Figura 1")
+![alt text](./files/survival_curve_2_5.png "Figura 2")
+![alt text](./files/survival_curve_3_2.png "Figura 3")
 
 
 > Podemos observar que o método de análise de sobrevivência traz uma informação mais completa, no caso de censuras. Um alerta vermelho surge ao observamos mortes nos casos 1 e 2 quando as probabilidades de sobrevivência estão altas, isso pode significar uma calibração ruim do modelo, que será verificada com a métrica de brier.
 
 > Abaixo temos os resultados das métricas de C-Index e Brier Score para os casos 1, 2 e 3
-|modelo|cenário|métrica|valor|
-|--|--|--|--|
-|XGBSE|1| C-index| 0.716|
-|XGBSE|1 |Avg. Brier Score| 0.536|
-|COX|1 |C-index| 0.767|
-|COX|1 |Avg. Brier Score| 0.118|
-|XGBSE|2| C-index |0.691|
-|XGBSE|2| Avg. Brier Score |1.208|
-|COX|2| C-index |0.568|
-|COX|2| Avg. Brier Score |0.456|
-|XGBSE|3| C-index |0.785|
-|XGBSE|3| Avg. Brier Score |0.029|
-|COX|3| C-index |0.836|
-|COX|3| Avg. Brier Score |0.023|
+
+>|modelo|cenário|métrica|valor|
+>|--|--|--|--|
+>|XGBSE|1| C-index| 0.716|
+>|XGBSE|1 |Avg. Brier Score| 0.536|
+>|COX|1 |C-index| 0.767|
+>|COX|1 |Avg. Brier Score| 0.118|
+>|XGBSE|2| C-index |0.691|
+>|XGBSE|2| Avg. Brier Score |1.208|
+>|COX|2| C-index |0.568|
+>|COX|2| Avg. Brier Score |0.456|
+>|XGBSE|3| C-index |0.785|
+>|XGBSE|3| Avg. Brier Score |0.029|
+>|COX|3| C-index |0.836|
+>|COX|3| Avg. Brier Score |0.023|
 
 > É possível observar que para todos os casos, o modelo de Cox performou melhor em termos de C-Index, isso proavavelmente se deve ao fato de o xgbse necessitar de um volume maior de dados a fim de evitar sobreajuste.
 > Outro ponto é que o cenário 3 mostrou o melhor desempenho, tanto em termos de calibração quanto em ordenação, isso provavelmente ocorre pois estamos validando o modelo em populações semelhantes com a base de treino. Nos casos 1 e 2, utilizamos populações de bases de dados (cenários) diferentes, dificultando a generalização do modelo. Ainda assim, o C-Index não foi tão baixo, o que indica que ainda que a calibração das probabilidades de morte estejam muito fora (valor de brier score alto), a ordenação sugerida pelo modelo ainda faz sentido.
