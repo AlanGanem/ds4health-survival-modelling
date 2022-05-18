@@ -76,9 +76,9 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 > 
 Abaixo pode ser encontrados algumas curvas de sobrevivência para os casos 1, 2 e 3.
 
-![alt text](../files/survival_curve_1_4.png "Figura 1")
-![alt text](../files/survival_curve_2_5.png "Figura 2")
-![alt text](../files/survival_curve_3_2.png "Figura 3")
+![alt text](./files/survival_curve_1_4.png "Figura 1")
+![alt text](./files/survival_curve_2_5.png "Figura 2")
+![alt text](./files/survival_curve_3_2.png "Figura 3")
 
 
 > Podemos observar que o método de análise de sobrevivência traz uma informação mais completa, no caso de censuras. Um alerta vermelho surge ao observamos mortes nos casos 1 e 2 quando as probabilidades de sobrevivência estão altas, isso pode significar uma calibração ruim do modelo, que será verificada com a métrica de brier.
