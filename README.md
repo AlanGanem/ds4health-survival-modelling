@@ -1,7 +1,7 @@
 # Projeto 2 – Predizendo Prognóstico de Mortalidade com Dados Sintéticos
 
-# Projeto `Previsão de prognóstico médico utilizando dados sintéticos`
-# Project `Prognostics prediction with synthetic data`
+# `Previsão de prognóstico médico utilizando dados sintéticos`
+# `Prognostics prediction with synthetic data`
 
 # Apresentação
 
