@@ -27,8 +27,8 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 # Metodologia
 > Para responder a pergunta inicial, iremos fazer considerar que
-> cada unidade de experimento será considerada uma visita de um paciente. Isso nos permite ter dados atualizados de condições
-> do paciente a cada nova visita e atualizar assim os atributos que o representam.
+> cada unidade de experimento será considerada uma descoberta de condição crônica em um paciente, representada pela combinção das colunas `START` e `PATIENT`. Isso nos permite ter dados atualizados de condições
+> do paciente a cada nova descoberta e atualizar assim os atributos (condições crônicas) que o representam.
 > Os pacientes serão representados pelas seguintes variáveis:
 > - **LAT**: float(raw) -> Latitude da posição geográfica do atendimento)
 > - **LON**: float(raw) -> Longitude da posição geográfica do atendimento)
