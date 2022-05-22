@@ -13,13 +13,15 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 # Contextualização da Proposta
 > Esse trabalho busca tentar criar um modelo de previsão de prognóstico (sobrevivência) de pacientes sintéticos,
-> gerados a partir do software [Synthea](https://synthea.mitre.org/)
+> gerados a partir do software [Synthea](https://synthea.mitre.org/). A ideia do modelo é ser genérico, a fim de que dada a descoberta de qualquer condição,
+> o paciente possa conhecer suas chances de sobrevivência no tempo.
 ## Ferramentas
 > Para tal, serão utilizadas bibliotecas de código aberto em python, como:
 > - [pandas](https://pandas.pydata.org/)
 > - [scikit-learn](https://scikit-learn.org/stable/)
 > - [seaborn](https://seaborn.pydata.org/)
 > - [xgbse](https://github.com/loft-br/xgboost-survival-embeddings)
+> - [lifelines](https://lifelines.readthedocs.io/en/latest/)
 
 > As explorações e modelagems serão realizadas em notebooks presentes na pasta `notebooks` do projeto
 
@@ -37,9 +39,18 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 > - **ETHNICITY**: str categorical(raw) -> Etnia do paciente
 > - **GENDER**: str categorical(raw) -> Gênero do paciente
 
-> Como condições válidas, consideraremos todas que não possuem o rótulo "(finding)", que indica um levantamento de dado não necessariamente relacionado á uma condição de saúde.
+> Como será utilizado um modelo de análise de sobrevivência, as variáveis resposta serão duas:
+> - **SURVIVAL_SINCE_CONDITION**: float(calculada) -> Tempo (dias) entre a descoberta da condição e o óbito, se não houver registro de óbito, é  tempo entre a descoberta da condição e a data mais recente de registro.
+> - **IS_DEAD**: bool(calculada) -> Booleano que identifica se o paciente tem registro de óbito ou não.
 
-> Um exemplo de como os dados aparecem antes de serem transformados em variáveis dummy pode ser encontrado abaixo, para um paciente em específico:
+> Como condições válidas, consideraremos todas que não possuem o rótulo "(finding)", que indica um levantamento de dado não necessariamente relacionado á > uma condição de saúde. É interessante pontuar que algumas dessas variáveis com rótulo "(finding)" podem ser explicativas em termos de predição de > prognóstico. Por exemplo, a variável que verifica se o paciente possui um emprego estável pode ser um proxy para muitas outras variáveis, como renda, saúde
+> mental, etc...
+> A escolha de tirar essas variáveis do modelo tem em vista possíveis viéses que o modelo pode adquirir, e caso esse modelo seja utilizado na tomada de decisões (filas de priorização para um tratamentp, por exemplo),
+> esses viéses podem retroalimentar o sistema modelado. Por exemplo, o modelo pode indicar que o fato do paciente possuir um emprego formal estável reduz sua
+> chance de óbito e por isso pode despriorizar esse paciente ma fila de um transplante de orgão, por exemplo. Como essa questão envolve um debate ético mais profundo, decidiu-se
+> excluir essas variáveis em um primeiro momento.
+
+> Podemos então observar abaixo um exemplo de como os dados aparecem antes de serem transformados em variáveis dummy, para um paciente em específico:
 
 >| PATIENT                              | START               |     LAT |      LON |     AGE | RACE   | ETHNICITY   | GENDER   | CONDITION_HISTORY                                                                                                                                                                                                        | CURRENT_CONDITION                                                        |   IS_DEAD |   SURVIVAL_SINCE_CONDITION |
 >|:-------------------------------------|:--------------------|--------:|---------:|--------:|:-------|:------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|----------:|---------------------------:|
@@ -54,7 +65,8 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 >| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2021-03-09 00:00:00 | 41.5569 | -70.9615 | 88.2603 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Viral sinusitis (disorder)                                               |         0 |                        434 |
 >| 0359aba6-a9cb-91d2-4c61-f0804f669124 | 2022-01-05 00:00:00 | 41.5569 | -70.9615 | 89.0877 | white  | nonhispanic | M        | Sleep disorder (disorder)__SEP__Sleep apnea (disorder)__SEP__Hypertension__SEP__Coronary Heart Disease__SEP__Chronic sinusitis (disorder)__SEP__History of myocardial infarction (situation)__SEP__Myocardial Infarction | Laceration of thigh                                                      |         0 |                        132 |                                   |
 
-> As variáveis finais que serão utilizadas pelo modelo passarão por uma etapa de seleção de features utilizando o modelo de Cox (Stel et al. 2011), considerado um modelo linear semiparamétrico para análise de sobrevivência. Devido sua formulação semiparamétrica, é possível determinar o p-valor dos parâmetros lineares de cada uma das features no modelo, de modo que é possível manter apenas as variáveis com p-valor menor que 0,05.
+> É possível observar que a coluna "CONDITION_HISTORY" possui as condições cronicas cumulativas do paciente ao longo do tempo.
+> As variáveis finais que serão utilizadas pelo modelo passarão por uma etapa de seleção de features utilizando o modelo de Cox (Stel et al. 2011), considerado um modelo linear semiparamétrico para análise de sobrevivência. Devido sua formulação semiparamétrica, é possível determinar o p-valor dos parâmetros lineares de cada uma das features no modelo, de modo que é possível manter apenas as variáveis com p-valor menor que 0,05, ou levar em conta também a importância absoluta da variável  (parâmetros do modelo linear). Nesse trabalho, esse método foi utilizado para verificar inconcistências nos valores das features, verificando sua contribuição marginal para a probabilidade de sobrevivência. Assim, foi possível verificar que features que levavam em conta as condições recentes do paciente (descobertas na visita em questão) tinham um comportamento estranho (ex.: descoberta de um tumor no pulmão diminui a chance de óbito). Uma hipótese do motivo disso acontecer tem a ver com o fato de que o modelo pode estar aprendendo que a descoberta de uma condição diminui a chance de morte por ela, mas isso não explica totalmente o comportament observado e por isso esse conjunto de features foi retirado.
 
 > Para tarefa de aprendizado, iremos considerar o framework de análise de sobreviência (Rai et al. 2021), que tenta modelar o tempo de ocorrência de um evento em um cenário de censura. A censura ocorre quando unidades do experimento ainda não registraram a ocorrência do evento em questão (óbito, por exemplo), e por isso só é possível inferir que o evento ocorrerá no futuro, mas não se sabe precisamente quando. Uma estratégia comum seria apenas considerar o histórico de pacientes que já morreram, mas isso significaria utilizar apenas 15% das bases de dados, o que prejudicaria a utilização de modelos que requerem mais dados e além disso, é possível que esse filtro leve a viéses na base de dados final.
 
